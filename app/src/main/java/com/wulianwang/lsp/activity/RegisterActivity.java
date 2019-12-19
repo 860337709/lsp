@@ -40,6 +40,15 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        bt1 = (Button) findViewById(R.id.button2);//id后面为上方button的id
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
 
 
         bt2 = (Button) findViewById(R.id.button);
@@ -73,9 +82,10 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         this.checkBox = (CheckBox) super.findViewById(R.id.checkBox);
-
+        this.btn = (Button) super.findViewById(R.id.button);
 
 // 设置CheckBox默认不选中
+        btn.setEnabled(false);
 
         this.checkBox.setFocusable(false);
 
@@ -91,11 +101,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (isChecked == true) {
 
-                    btn.setClickable(true);
+                    btn.setEnabled(true);
 
                 } else {
 
-                    btn.setClickable(false);
+                    btn.setEnabled(false);
+
+
 
                 }
 
@@ -116,13 +128,17 @@ public class RegisterActivity extends AppCompatActivity {
 
             EditText editText=(EditText)findViewById(R.id.editText3);
             EditText editTextt=(EditText)findViewById(R.id.editText4);
-
+           EditText editTextu=(EditText)findViewById(R.id.editText);
+            EditText editTexto=(EditText)findViewById(R.id.editText2);
+           EditText editTextp=(EditText)findViewById(R.id.editText5);
             public void onClick(View v) {
                 String password=editText.getText().toString();//第一次输入的密码赋值给password
                 String password2=editTextt.getText().toString();//第二次输入的密码赋值给password2
-
-                if (password.equals("")||password2.equals("")){	//判断两次密码是否为空
-                    Toast.makeText(getApplicationContext(),"密码不能为空",Toast.LENGTH_SHORT).show();
+               String password4=editTextu.getText().toString();
+               String password5=editTexto.getText().toString();
+                String password6=editTextp.getText().toString();
+                if (password.equals("")||password2.equals("")||password4.equals("")||password5.equals("")||password6.equals("")){	//判断两次密码是否为空
+                    Toast.makeText(getApplicationContext(),"输入内容不能为空",Toast.LENGTH_SHORT).show();
                 }else if(password.equals(password2)){
                     Toast.makeText(getApplication(),"注册成功",Toast.LENGTH_SHORT).show();
 
@@ -132,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
                     finish();
 
 
-                }else if (password.equals("") != password2.equals("")){
+                }else if (!password.equals(password2)){
                     Toast.makeText(getApplication(),"密码不一致，请重新输入",Toast.LENGTH_SHORT).show();
                 }
 
